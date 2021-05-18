@@ -10,6 +10,9 @@ Route::get('/home', [SiteController::class, 'home'])
     ->name('home')
     ->middleware('auth');
 
-Route::get('/admin', [AdminController::class,'index'])
-    ->name('admin.index')
-    ->middleware(['auth', 'admin']);
+
+    Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function ()
+    {
+        Route::get('/', [AdminController::class,'index'])->name('index');
+        Route::resource('users', [UserController::class]);
+    });
