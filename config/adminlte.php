@@ -234,6 +234,11 @@ return [
             'url'  => 'admin',
             'icon'  => 'nav-icon fas fa-fw fa-home',
         ],
+        [
+            'text' => 'Users',
+            'url'  => 'admin/users',
+            'icon'  => 'nav-icon fas fa-fw fa-users',
+        ],
         
     ],
 
