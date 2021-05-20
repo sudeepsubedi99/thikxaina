@@ -14,5 +14,6 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::resource('users', UserController::class);
+        Route::resource('categories', CategoryController::class);
     });
 });
