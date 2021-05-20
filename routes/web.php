@@ -5,6 +5,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 Route::get('/', [SiteController::class, 'index']);
+Route::get('/product', [SiteController::class, 'show']);
 
 
 Route::middleware('auth')->group(function () {

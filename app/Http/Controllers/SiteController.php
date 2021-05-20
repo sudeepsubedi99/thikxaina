@@ -8,9 +8,13 @@ class SiteController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        return view('/frontend/index');
     }
 
+    public function show()
+    {
+        return view('/frontend/show');
+    }
     public function home()
     {
         if ( auth()->user()->role == "Admin")
