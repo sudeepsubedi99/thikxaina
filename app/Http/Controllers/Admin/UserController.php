@@ -13,7 +13,7 @@ class UserController extends Controller
     public $roles = [
         'User',
         'Admin',
-        // 'Editor',
+        'Editor',
     ];
     /**
      * Display a listing of the resource.
