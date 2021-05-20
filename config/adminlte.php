@@ -239,6 +239,11 @@ return [
             'url'  => 'admin/users',
             'icon'  => 'nav-icon fas fa-fw fa-users',
         ],
+        [
+            'text' => 'Categories',
+            'url'  => 'admin/categories',
+            'icon'  => 'nav-icon fas fa-fw fa-layer-group',
+        ],
         
     ],
 
