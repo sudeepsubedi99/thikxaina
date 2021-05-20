@@ -13,6 +13,7 @@ class UserController extends Controller
     public $roles = [
         'User',
         'Admin',
+        // 'Editor',
     ];
     /**
      * Display a listing of the resource.
@@ -21,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $users = User::all(); 
         return view('admin.users.index',compact('users'));
     }
 
@@ -49,18 +50,21 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
+            'contact' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'role' => ['required', Rule::in($this->roles)],
+            
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'contact' => $request->contact,
             'role' => $request->role,
         ]);
 
         return redirect()->route('admin.users.index')
-                ->with('success', 'User Created Successfully');
+                ->with('success', 'User Created Successfully!');
     }
 
     /**
@@ -100,19 +104,23 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'password' => 'nullable|min:6',
+            'contact' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10,' . $user->id,
             'role' => ['required', Rule::in($this->roles)],
         ]);
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->contact = $request->contact;
         $user->role = $request->role;
 
         if(!empty($request->password)){
             $user->password = bcrypt($request->password);
         }
 
+        $user->save();
+
         return redirect()->route('admin.users.index')
-                ->with('success', 'User Updated Successfully');
+                ->with('success', 'User Updated Successfully!');
     }
     
 
@@ -127,6 +135,6 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users.index')
-        ->with('success', 'User Deleted Successfully');
+        ->with('success', 'User Deleted Successfully!');
     }
 }
