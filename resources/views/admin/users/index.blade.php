@@ -57,6 +57,13 @@
                   @endforeach
               </tbody>
           </table>
-      </div>
+        </div>
+        @if ($users->perPage() > $user->total)
+
+       <div class="card-footer">
+        {{ $users->links() }}
+       </div>
+        
+        @endif
   </div>
 @stop
