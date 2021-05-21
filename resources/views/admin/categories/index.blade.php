@@ -2,9 +2,9 @@
 
 @section('title', 'All Categories')
 
-@dd($categories)
-
 @section('content')
+
+{{-- @dd($categories) --}}
 
 <x-alert />
 <x-delete />
@@ -63,7 +63,7 @@
               </tbody>
           </table>
         </div>
-        @if ($categories->perPage() > $category->total)
+        @if ($categories->perPage() > $categories->total() )
 
        <div class="card-footer">
         {{ $categories->links() }}
