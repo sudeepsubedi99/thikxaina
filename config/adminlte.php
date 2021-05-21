@@ -244,6 +244,11 @@ return [
             'url'  => 'admin/categories',
             'icon'  => 'nav-icon fas fa-fw fa-layer-group',
         ],
+        [
+            'text' => 'Products',
+            'url'  => 'admin/products',
+            'icon'  => 'nav-icon fab fa-fw fa-product-hunt',
+        ],
         
     ],
 
