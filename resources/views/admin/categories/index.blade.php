@@ -62,6 +62,15 @@
                   @endforeach
               </tbody>
           </table>
+
+           {{-- if no items --}}
+           @if (count($categories)==0)
+           <div class="alert alert-warning m-0 text-center">
+               No items found!
+           </div>       
+           @endif
+
+
         </div>
         @if ($categories->perPage() < $categories->total() )
 
