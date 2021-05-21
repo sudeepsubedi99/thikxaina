@@ -234,6 +234,21 @@ return [
             'url'  => 'admin',
             'icon'  => 'nav-icon fas fa-fw fa-home',
         ],
+        [
+            'text' => 'Users',
+            'url'  => 'admin/users',
+            'icon'  => 'nav-icon fas fa-fw fa-users',
+        ],
+        [
+            'text' => 'Categories',
+            'url'  => 'admin/categories',
+            'icon'  => 'nav-icon fas fa-fw fa-layer-group',
+        ],
+        [
+            'text' => 'Products',
+            'url'  => 'admin/products',
+            'icon'  => 'nav-icon fab fa-fw fa-product-hunt',
+        ],
         
     ],
 
@@ -297,13 +312,13 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/select2/js/select2.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                    'asset' => true,
+                    'location' => 'vendor/select2/css/select2.min.css',
                 ],
             ],
         ],
@@ -322,8 +337,18 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'asset' => true,
+                    'location' => 'vendor/sweetalert2/sweetalert2.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/sweetalert2/sweetalert2.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css',
                 ],
             ],
         ],
