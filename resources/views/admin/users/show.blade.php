@@ -9,7 +9,7 @@
       <div class="card-header ">
           <h3 class="card-title text-bold">User Information</h3>
           <div class="card-tools">
-            <a href="{{ route('admin.users.create') }}" class="btn btn-primary btn-sm">
+            <a href="{{ route('admin.users.index') }}" class="btn btn-primary btn-sm">
             Go Back
         </a>
           </div>

@@ -54,7 +54,7 @@
                             Delete
                         </button>
 
-                        <form id="delete-form-{{ $category->id }}" action="{{ route('admin.categories.destroy', $user->id) }}" method="POST" style="display:none">
+                        <form id="delete-form-{{ $category->id }}" action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" style="display:none">
                             @csrf @method('DELETE')
                         </form>
                       </td>
@@ -63,7 +63,7 @@
               </tbody>
           </table>
         </div>
-        @if ($categories->perPage() > $categories->total() )
+        @if ($categories->perPage() < $categories->total() )
 
        <div class="card-footer">
         {{ $categories->links() }}
