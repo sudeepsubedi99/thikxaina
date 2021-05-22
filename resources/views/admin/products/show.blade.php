@@ -28,7 +28,7 @@
 
               <tr>
                   <th>Price</th>
-                  <td>{{ $product->price }}</td>
+                  <td>{{ money($product->price) }}</td>
               </tr>
               <tr>
                 <th>Description</th>
