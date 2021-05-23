@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Media;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Services\MediaService;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -43,9 +46,14 @@ class ProductController extends Controller
             'name' => ['required'],
             'price' => ['required', 'numeric', 'gt:0'],
             'description' => ['nullable'],
+            'product_image' => ['nullable', 'image', 'mimes:png,jpg,gif']
         ]);
-
-        Product::create($data); 
+        
+        $product = Product::create($request->only('name', 'price', 'description')); 
+        if($request->hasFile('product_image')){
+            $media_id = MediaService::upload($request->file('product_image'), "products");
+            $product->media()->attach($media_id);
+        }
 
         return redirect()->route('admin.products.index')
             ->with('success', 'Product created successfully!');
@@ -105,5 +113,38 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('admin.products.index')
         ->with('success', 'Product deleted successfully!');
+    }
+
+    public function images(Product $product)
+    {
+        return view('admin.products.image', compact('product'));
+    }
+
+    public function uploadImages(Request $request, Product $product)
+    {
+ 
+        //validate
+        $request->validate([
+            'product_image' => ['required', 'image' ,'mimes:png,jpg,gif'],
+        ]);
+
+        //upload
+        $media_id = MediaService::upload($request->file('product_image'), "images");
+
+        $product->media()->attach($media_id);
+
+
+        return redirect()->route('admin.products.show', $product)
+            ->with('success', 'Product Image Uoloaded Successfully!');
+    }
+
+    public function removeImage(Product $product, Media $media)
+    {
+        $product->media()->detach($media->id);
+
+        Storage::delete('public/' . $media->path);
+        $media->delete();
+        return redirect('admin.products.show', $product)
+            ->with('success', 'Image Deleted Successfully!');
     }
 }

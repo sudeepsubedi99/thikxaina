@@ -23,6 +23,7 @@
               <thead class="thead-dark">
                   <tr>
                       <th>Id</th>
+                      <th>Image</th>
                       <th>Name</th>
                       <th>Price</th>
                       <th>Action</th>
@@ -32,6 +33,12 @@
                   @foreach($products as $product )   
                   <tr>
                       <td> {{ $product->id }}</td>
+                      <td>
+                          @if ($product->image)
+                              
+                          @endif
+                          <img height="30px" src="{{ $product->image }}" alt="{{ $product->name }}">
+                      </td>
                       <td> {{ $product->name }}</td>
                       <td> {{ $product->price }}</td>
                       <td>
