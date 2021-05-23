@@ -18,7 +18,8 @@
           </div>
       </div>
       <div class="card-body" >
-           <form action="{{ route('admin.products.store') }}" method="POST">
+           <form action="{{ route('admin.products.store') }}" method="POST"
+           enctype="multipart/form-data">
              @csrf 
 
              <x-input
@@ -37,6 +38,12 @@
              text="Description"
              type="textarea"
              />
+
+             <x-input
+                text="Product Image"
+                type="file"
+                field="product_image"
+              />
 
                 
 

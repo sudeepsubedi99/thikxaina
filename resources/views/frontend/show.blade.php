@@ -15,7 +15,7 @@
                        <span>Feb 20, 2020</span>
                    </div>
                    <p class="mt-8 text-gray-300">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum vel a voluptatum consequuntur dolorum aut!
+                       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum animi aliquam maxime molestias, earum similique doloremque provident quia velit pariatur perferendis! Totam voluptas cumque minus corrupti aperiam error dignissimos doloremque!
                    </p>
 
                    <div class="mt-12">

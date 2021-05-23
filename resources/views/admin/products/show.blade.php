@@ -9,7 +9,10 @@
       <div class="card-header ">
           <h3 class="card-title text-bold">Product Information</h3>
           <div class="card-tools">
-            <a href="{{ route('admin.products.index') }}" class="btn btn-primary btn-sm">
+            <a href="{{ route('admin.products.images', $product) }}" class="btn btn-success btn-sm">
+               Images
+        </a>
+        <a href="{{ route('admin.products.index') }}" class="btn btn-primary btn-sm">
             Go Back
         </a>
           </div>
@@ -33,6 +36,25 @@
               <tr>
                 <th>Description</th>
                 <td>{{ $product->description }}</td>
+            </tr>
+
+            <tr>
+                <th>Images</th>
+                <td>
+                   <div class="d-flex align-items-center ">
+                    @foreach ($product->media as $media )
+                    <div style="border: 1px solid #ccc;" class="p-2">
+                     <img src="/storage/{{ $media->path }}" height="100px" alt="">
+                     <form action="{{  route('admin.product.images.remove', [$product, $media]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')  
+                        <button class="btn btn-danger">Delete</button>
+                     </form>
+                    </div>
+                             
+                         @endforeach
+                   </div>
+                </td>
             </tr>
             
                   
